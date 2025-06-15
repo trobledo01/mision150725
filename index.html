@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión: 150725</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .mission-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff41;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 65, 0.5),
+                inset 0 0 50px rgba(0, 255, 65, 0.1);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 0 50px rgba(0, 255, 65, 0.5), inset 0 0 50px rgba(0, 255, 65, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(0, 255, 65, 0.8), inset 0 0 80px rgba(0, 255, 65, 0.2);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .classified-stamp {
+            color: #ff0000;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            transform: rotate(-15deg);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            border: 2px solid #ff0000;
+            padding: 5px 10px;
+            background: rgba(255, 0, 0, 0.1);
+        }
+        
+        .mission-title {
+            color: #00ff41;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #00ff41;
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ff41; }
+            to { text-shadow: 0 0 30px #00ff41, 0 0 40px #00ff41; }
+        }
+        
+        .mission-code {
+            color: #ffffff;
+            font-size: 16px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .mission-brief {
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 4px solid #00ff41;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .brief-title {
+            color: #00ff41;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .brief-text {
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .target-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+        }
+        
+        .target-label {
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .target-name {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 10px #ffffff;
+            margin: 10px 0;
+        }
+        
+        .target-description {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .mission-objectives {
+            margin: 20px 0;
+        }
+        
+        .objectives-title {
+            color: #00ff41;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .objective-item {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .objective-item::before {
+            content: "▶";
+            color: #00ff41;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .activate-button {
+            background: linear-gradient(45deg, #ff0000, #ff4500);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .activate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+        }
+        
+        .activate-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .activate-button:hover::before {
+            left: 100%;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            animation: successGlow 1s ease-in-out;
+        }
+        
+        @keyframes successGlow {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .success-title {
+            color: #00ff41;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #00ff41;
+        }
+        
+        .success-text {
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .heart {
+            color: #ff0066;
+            font-size: 24px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                transparent 0%,
+                rgba(0, 255, 65, 0.03) 50%,
+                transparent 100%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scanlines 2s linear infinite;
+        }
+        
+        @keyframes scanlines {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .matrix-char {
+            position: absolute;
+            color: #00ff41;
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            animation: matrixFall linear infinite;
+        }
+        
+        @keyframes matrixFall {
+            0% { 
+                opacity: 1;
+                transform: translateY(-100px);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+    <div class="scanlines"></div>
+    
+    <div class="mission-container">
+        <div class="classified-stamp">CLASIFICADO</div>
+        
+        <div id="missionBrief">
+            <div class="header">
+                <h1 class="mission-title">MISIÓN ESPECIAL</h1>
+                <div class="mission-code">CÓDIGO: PADRE-2025</div>
+            </div>
+            
+            <div class="mission-brief">
+                <div class="brief-title">INFORMACIÓN CLASIFICADA</div>
+                <div class="brief-text">
+                    Esta misión ha sido diseñada para reconocer al agente más importante de la familia. 
+                    Tu participación en esta operación ha sido... extraordinaria.
+                </div>
+            </div>
+            
+            <div class="target-info">
+                <div class="target-label">OBJETIVO PRINCIPAL:</div>
+                <div class="target-name">PAPÁ</div>
+                <div class="target-description">
+                    Superhéroe encubierto, experto en solucionar problemas imposibles, 
+                    especialista en hacer sonreír, chofer, diseñador de interiores, 
+                    mensajero, administrador, contador, auditor, imitador 
+                    y sobretodo estar siempre presente con su familia.
+                </div>
+            </div>
+            
+            <div class="mission-objectives">
+                <div class="objectives-title">OBJETIVOS DE LA MISIÓN:</div>
+                <div class="objective-item">Demostrar gratitud por tu dedicación infinita</div>
+                <div class="objective-item">Reconocer tus increíbles habilidades como padre</div>
+                <div class="objective-item">Celebrar tu día especial con amor y admiración</div>
+                <div class="objective-item">Confirmar que eres el mejor papá del mundo</div>
+            </div>
+            
+            <button class="activate-button" onclick="activateMission()">
+                ACTIVAR MISIÓN
+            </button>
+        </div>
+        
+        <div id="successMessage" class="hidden">
+            <div class="success-message">
+                <div class="success-title">¡MISIÓN COMPLETADA!</div>
+                <div class="success-text">
+                    <strong>Feliz Día del Padre</strong> <span class="heart">❤️</span>
+                </div>
+                <div class="success-text">
+                    Gracias por ser nuestro héroe de todos los días, 
+                    por tus abrazos que lo arreglan todo y por siempre estar ahí cuando te necesitamos.
+                </div>
+                <div class="success-text">
+                    <strong>Eres simplemente increíble, papá.</strong>
+                </div>
+                <div class="success-text">
+                    Esta misión se autodestruirá en... ¡nunca! 
+                    Porque nuestro amor por ti es para siempre.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Audio Context para efectos de sonido
+        let audioContext = null;
+        let isAudioEnabled = false;
+        
+        // Inicializar audio context después de interacción del usuario
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                isAudioEnabled = true;
+            }
+        }
+        
+        // Generar tono beep
+        function playBeep(frequency = 800, duration = 200, volume = 0.1) {
+            if (!isAudioEnabled) return;
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.01);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration / 1000);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration / 1000);
+        }
+        
+        // Efecto de alerta tecnológica
+        function playTechAlert() {
+            if (!isAudioEnabled) return;
+            playBeep(1000, 100, 0.08);
+            setTimeout(() => playBeep(800, 100, 0.08), 120);
+            setTimeout(() => playBeep(1200, 150, 0.08), 250);
+        }
+        
+        // Efecto de activación
+        function playActivationSound() {
+            if (!isAudioEnabled) return;
+            // Secuencia de beeps ascendentes
+            const frequencies = [400, 500, 600, 700, 800, 900, 1000];
+            frequencies.forEach((freq, index) => {
+                setTimeout(() => playBeep(freq, 80, 0.06), index * 100);
+            });
+        }
+        
+        // Efecto de éxito
+        function playSuccessSound() {
+            if (!isAudioEnabled) return;
+            // Acorde de éxito
+            setTimeout(() => playBeep(523, 300, 0.05), 0);    // C
+            setTimeout(() => playBeep(659, 300, 0.05), 100);  // E
+            setTimeout(() => playBeep(784, 400, 0.05), 200);  // G
+            setTimeout(() => playBeep(1047, 500, 0.06), 300); // C alta
+        }
+        
+        // Sonido ambiente continuo
+        function startAmbientSound() {
+            if (!isAudioEnabled) return;
+            
+            setInterval(() => {
+                if (Math.random() < 0.3) { // 30% probabilidad cada 3 segundos
+                    playBeep(200 + Math.random() * 400, 50, 0.02);
+                }
+            }, 3000);
+        }
+        
+        // Crear efecto matriz de fondo
+        function createMatrix() {
+            const matrixBg = document.getElementById('matrixBg');
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            
+            for (let i = 0; i < 50; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                char.style.animationDelay = Math.random() * 2 + 's';
+                matrixBg.appendChild(char);
+            }
+        }
+        
+        function activateMission() {
+            // Inicializar audio en la primera interacción
+            initAudio();
+            
+            const missionBrief = document.getElementById('missionBrief');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Reproducir sonido de activación
+            playActivationSound();
+            
+            let countdown = 3;
+            const button = document.querySelector('.activate-button');
+            const originalText = button.textContent;
+            
+            const countdownInterval = setInterval(() => {
+                button.textContent = `ACTIVANDO... ${countdown}`;
+                playBeep(600, 100, 0.08); // Beep en cada segundo del countdown
+                countdown--;
+                
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    
+                    // Sonido de alerta final
+                    playTechAlert();
+                    
+                    // Transition effect
+                    missionBrief.style.opacity = '0';
+                    missionBrief.style.transform = 'scale(0.8)';
+                    missionBrief.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        missionBrief.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                        successMessage.style.opacity = '0';
+                        successMessage.style.transform = 'scale(0.8)';
+                        
+                        // Sonido de éxito
+                        playSuccessSound();
+                        
+                        setTimeout(() => {
+                            successMessage.style.opacity = '1';
+                            successMessage.style.transform = 'scale(1)';
+                            successMessage.style.transition = 'all 0.5s ease';
+                        }, 50);
+                    }, 500);
+                }
+            }, 1000);
+        }
+        
+        // Inicializar efectos
+        createMatrix();
+        
+        // Sonidos ambientales al cargar la página
+        document.addEventListener('click', function() {
+            if (!isAudioEnabled) {
+                initAudio();
+                startAmbientSound();
+                // Sonido de bienvenida
+                setTimeout(() => playTechAlert(), 500);
+            }
+        }, { once: true });
+        
+        // Efectos de hover con sonido
+        document.querySelector('.activate-button').addEventListener('mouseenter', function() {
+            if (isAudioEnabled) {
+                playBeep(1200, 50, 0.04);
+            }
+        });
+        
+        // Recrear caracteres de matriz periódicamente
+        setInterval(() => {
+            const matrixBg = document.getElementById('matrixBg');
+            matrixBg.innerHTML = '';
+            createMatrix();
+        }, 5000);
+    </script>
+</body>
+</html>
