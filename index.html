@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misión: 150725</title>
+    <title>Misión: Día del Padre</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         
@@ -33,16 +33,26 @@
         
         .mission-container {
             position: relative;
-            width: 90%;
+            width: 95%;
             max-width: 600px;
             background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00ff41;
             border-radius: 20px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 
                 0 0 50px rgba(0, 255, 65, 0.5),
                 inset 0 0 50px rgba(0, 255, 65, 0.1);
             animation: pulse 3s ease-in-out infinite;
+            margin: 10px auto;
+        }
+        
+        @media (max-width: 768px) {
+            .mission-container {
+                width: 98%;
+                padding: 15px;
+                margin: 5px auto;
+                border-radius: 15px;
+            }
         }
         
         @keyframes pulse {
@@ -61,26 +71,43 @@
         
         .classified-stamp {
             color: #ff0000;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             transform: rotate(-15deg);
             position: absolute;
-            top: 10px;
-            right: 20px;
+            top: 8px;
+            right: 15px;
             border: 2px solid #ff0000;
-            padding: 5px 10px;
+            padding: 4px 8px;
             background: rgba(255, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .classified-stamp {
+                font-size: 10px;
+                letter-spacing: 1px;
+                top: 5px;
+                right: 10px;
+                padding: 3px 6px;
+            }
         }
         
         .mission-title {
             color: #00ff41;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 2px;
             text-shadow: 0 0 20px #00ff41;
             margin-bottom: 10px;
             animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @media (max-width: 768px) {
+            .mission-title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
         }
         
         @keyframes glow {
@@ -98,9 +125,16 @@
         .mission-brief {
             background: rgba(0, 255, 65, 0.05);
             border-left: 4px solid #00ff41;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 15px;
+            margin: 15px 0;
             border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mission-brief {
+                padding: 12px;
+                margin: 12px 0;
+            }
         }
         
         .brief-title {
@@ -135,10 +169,16 @@
         
         .target-name {
             color: #ffffff;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             text-shadow: 0 0 10px #ffffff;
             margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .target-name {
+                font-size: 20px;
+            }
         }
         
         .target-description {
@@ -179,19 +219,34 @@
             background: linear-gradient(45deg, #ff0000, #ff4500);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             font-family: 'Orbitron', monospace;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 2px;
             border-radius: 25px;
             cursor: pointer;
             display: block;
-            margin: 30px auto 0;
+            margin: 25px auto 0;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+            width: fit-content;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .activate-button {
+                padding: 15px 20px;
+                font-size: 12px;
+                letter-spacing: 1px;
+                margin: 20px auto 10px;
+                min-width: 180px;
+                width: auto;
+                max-width: 90%;
+            }
         }
         
         .activate-button:hover {
@@ -234,17 +289,31 @@
         
         .success-title {
             color: #00ff41;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             margin-bottom: 20px;
             text-shadow: 0 0 20px #00ff41;
         }
         
+        @media (max-width: 768px) {
+            .success-title {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+        }
+        
         .success-text {
             color: #ffffff;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 1.6;
             margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .success-text {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
         }
         
         .heart {
@@ -328,7 +397,7 @@
             <div class="mission-brief">
                 <div class="brief-title">INFORMACIÓN CLASIFICADA</div>
                 <div class="brief-text">
-                    Esta misión ha sido diseñada para reconocer al agente más importante de la familia. 
+                    Esta misión ha sido diseñada para reconocer a uno de los agentes más importante de la familia. 
                     Tu participación en esta operación ha sido... extraordinaria.
                 </div>
             </div>
